@@ -21,7 +21,7 @@ $(function() {
   const p3 = new Promise((resolve, reject) => {
     chrome.storage.local.get(['unixtimestamp'], (result) => {
       // 取得できない、または待機時間を過ぎていればOK
-      if (result.unixtimestamp === null || unixtimestamp() > result.unixtimestamp) {
+      if (!result.unixtimestamp || unixtimestamp() > result.unixtimestamp) {
         resolve(true);
       }
       resolve(false);
