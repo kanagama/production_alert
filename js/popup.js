@@ -52,6 +52,8 @@ function add()
  */
 function save()
 {
+  $('.flash-message').hide();
+
   // 現在の保存データをすべて削除
   chrome.storage.local.clear(() => {
     console.log('Everything was removed');
