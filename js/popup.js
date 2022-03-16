@@ -1,11 +1,7 @@
-let regex = new RegExp('(https?|ftp)(:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)');
+let regex = new RegExp('^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$','i');
 let key_name = 'production_alert';
 
 $(function() {
-
-  var i = 0;
-  var storage;
-  var key;
 
   chrome.storage.local.get(['production_title'], (result) => {
     $('.messageinput').val(result.production_title);
@@ -74,6 +70,7 @@ function save()
     const value = $(this).val();
     if (value !== '') {
       if (regex.test(value)) {
+        console.log(true);
         if (checks.indexOf(value) === -1) {
           checks.push(value);
           saves.push({key: value});
@@ -82,6 +79,7 @@ function save()
           $('.flash-message').show();
         }
       } else {
+        console.log(false);
         $('.flash-message p').text('不正なURLが入力されました。ご確認よろしくお願いいたします。');
         $('.flash-message').show();
         return false
