@@ -53,9 +53,10 @@ $(function() {
 /**
  * モーダル表示
  *
- * @param {string} title
+ * @param {string} show_title
  */
-function showModal(title) {
+function showModal(show_title)
+{
   // モーダルウィンドウと中身の要素を生成・クラスを付与
   const modalElement = document.createElement('div');
   modalElement.classList.add('displaymodal');
@@ -64,9 +65,9 @@ function showModal(title) {
 
 　　 // モーダルウィンドウに表示する要素を記述
   innerElement.innerHTML = `
-      <p>` + title + `</p>
+      <p>` + show_title + `</p>
       <button class="displaybutton">
-        10分非表示
+        10分間再表示しない
       </button>
       <link href="css/tailwind.min.css" rel="stylesheet">
       <style>
@@ -79,31 +80,35 @@ function showModal(title) {
         font-weight: bold;
         font-size: 24px;
         min-width: 70%;
-        zIndex:1;
+        z-index: 9999;
       }
 
       .displayinner {
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.9);
-        border: solid 1px #dfe4ea;
+        background-color: rgba(230, 230, 230, 0.9);
         border-radius: 10px;
-        padding: 5px 30px 5px 30px;
+        padding: 20px 30px 0px 30px;
+        border: 3px solid #444;
+      }
+
+      .displayinner p {
+        font-weight: bold;
       }
 
       .displaybutton {
-        display:block;
-        width:150px;
-        height:50px;
-        margin:1em auto;
-        line-height:10px;
-        background: gray;
-        border-radius:10%;
-        color:#fff;
-        font-size:16px;
-        font-weight:bold;
-        text-decoration:none;
-        text-align:center;
+        display: block;
+        width: 200px;
+        height: 50px;
+        margin: 1.5em auto;
+        line-height: 10px;
+        background: #007AFF;
+        border-radius: 15px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
       }
       </style>
   `;
