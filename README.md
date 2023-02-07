@@ -1,2 +1,4 @@
 # production_alert
-指定URLでアラートを出す chrome 拡張
+
+指定URLで指定したメッセージアラートを出す chrome 拡張
+

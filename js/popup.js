@@ -1,7 +1,10 @@
-let regex = new RegExp('^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$','i');
-let key_name = 'production_alert';
+const regex = new RegExp('^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$','i');
+const key_name = 'production_alert';
+const messageinput = document.getElementById(`messageinput`);
 
-$(function() {
+console.log(messageinput);
+
+document.addEventListener("DOMContentLoaded", function(){
 
   chrome.storage.local.get(['production_title'], (result) => {
     $('.messageinput').val(result.production_title);
@@ -18,23 +21,22 @@ $(function() {
     }
   });
 
-  $('.add').click(function() {
+  document.getElementById(`add`).addEventListener('click', function() {
     add();
   });
 
   // 保存ボタン
-  $('.save').click(function() {
+  document.getElementById(`save`).addEventListener('click', function() {
     save();
   });
 
-  // クリアボタン
-  $('.clear').click(function() {
+  document.getElementById(`clear`).addEventListener('click', function() {
     $('.messageinput').val('');
     $('.urlinput').each(function(){
       $(this).val('');
     });
     save();
-  })
+  });
 });
 
 /**
